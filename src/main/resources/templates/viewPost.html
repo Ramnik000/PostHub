@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>View Post</title>
+	<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/styleviewpost.css}" />
+</head>
+
+<body>
+
+	<h2 th:text="${title}"> Thread Title</h2>
+	<hr>
+	<h2><a href="/viewAllThread">Go Back to threads page</a></h2>
+
+	<div>
+		<ul>
+			<li th:each="post : ${posts}">
+
+				<p><strong>Username:</strong> <span th:text="${post.username}"></span></p>
+				<p><strong>Content:</strong> <span th:text="${post.content}"></span></p>
+			</li>
+		</ul>
+		<form th:method="post" th:action="@{/post}" th:object="${post}">
+			<input type="hidden" th:field="*{thread_id}" th:value="${thread_id}"required>
+			Add a Post: <input type="text" th:field="*{content}"><br>
+			<br>
+			<br>
+			<input type="submit" value="Add Post">
+		</form>
+
+	</div>
+
+</body>
+
+</html>

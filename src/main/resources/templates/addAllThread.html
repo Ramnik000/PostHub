@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+    <title>View Threads</title>
+    	 <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/styleallthreadview.css}" />
+
+</head>
+
+<body>
+    <h1>All Threads</h1>
+    <ul>
+        <li th:each="thread : ${threads}">
+            <strong>Id:</strong> <span th:text="${thread.thread_id}"></span><br>
+            <strong>Title:</strong> <span th:text="${thread.title}"></span><br>
+            <strong>Username:</strong> <span th:text="${thread.username}"></span><br>
+            <strong>Date:</strong> <span th:text="${thread.date}"></span><br>
+            <strong>Time:</strong> <span th:text="${thread.time}"></span><br>
+            <p><a th:href="@{/post/{id}(id=${thread.thread_id})}">View</a></p>
+            <hr>
+        </li>
+    </ul>
+</body>
+
+</html>

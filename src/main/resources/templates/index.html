@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Index</title>
+<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}" />
+</head>
+
+<body>
+	
+	<h1>Hello, Welcome to Employee Discussion Page</h1>
+	<br>
+	<h3>On this website employees can make thread and discuss on it.</h3>
+	<br>
+	<h2 style="color:red;" th:text="${param.msg}"></h2>
+
+	<ul>
+
+		<li>Go to the
+			<a th:href="@{/register}"> Registration Page (register new
+				user account)</a>
+		</li>
+		<li>Go to the <a href="/user" th:href="@{/user}">Go to Profile Page</a></li>
+	</ul>
+</body>
+
+</html>

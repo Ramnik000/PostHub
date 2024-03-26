@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+	<title>Add Thread</title>
+	<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/stylethread.css}" />
+</head>
+
+<body>
+	<h1>Add Thread</h1>
+	<form th:method="post" th:action="@{/addthreads}" th:object="${thread}">
+		Title: <input type="text" th:field="*{title}"><br>
+		<br>
+		Date:<input type="date" name="date" th:field="*{date}" required>
+		<br>
+		Time:<input type="time" name="time" th:field="*{time}" required>
+		<br>
+		<input type="submit" value="Add Thread">
+	</form>
+	
+<br>
+<p><a th:href="@{/viewAllThread}">View My Thread</a></p>
+</body>
+
+</html>

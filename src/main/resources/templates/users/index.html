@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-
+springsecurity6">
+
+<head>
+	<title>Protected</title>
+	<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/styleuser.css}" />
+</head>
+
+<body>
+	<h1>Welcome to the account !!</h1>
+	<div th:fragment="logout" class="logout" sec:authorize="isAuthenticated()">
+		User's Name: <span sec:authentication="name"></span> <br> Roles:
+		<span sec:authentication="principal.authorities"></span> <br> <br>
+		<div>
+			<form action="#" th:action="@{/logout}" method="post">
+				<input type="submit" value="Logout" />
+			</form>
+		</div>
+		<div>
+        <p><a th:href="@{/addThread}">Start a new Thread</a></p>
+        <p><a th:href="@{/viewAllThread}">View All Thread</a></p>
+
+    </div>
+    <h1>Your Threads!!</h1>
+    <ul>
+        <li th:each="thread : ${threads}">
+            <strong>Id:</strong> <span th:text="${thread.thread_id}"></span><br>
+            <strong>Title:</strong> <span th:text="${thread.title}"></span><br>
+            <strong>Username:</strong> <span th:text="${thread.username}"></span><br>
+            <strong>Date:</strong> <span th:text="${thread.date}"></span><br>
+            <strong>Time:</strong> <span th:text="${thread.time}"></span><br>
+            <p><a th:href="@{/post/{id}(id=${thread.thread_id})}">View</a></p>
+            <p><a th:href="@{/delete/{id}(id=${thread.thread_id})}">Delete Thread</a></p>
+            <ul>
+		<br />
+	</div>
+</body>
+
+</html>
